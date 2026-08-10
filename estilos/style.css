@@ -206,15 +206,21 @@ main > #hero {
     gap: 1.5rem;
     padding: 4rem 1rem;
     text-align: center;
+
+    height: 90vh;
 }
 
 #hero > h1 {
     font-family: var(--font-title);
     font-weight: 700;
-    font-size: clamp(1.5rem, 6vw, 2rem);
-    line-height: 1.2;
+    font-size: clamp(1.9rem, 6vw, 2rem);
+    line-height: 1.4;
     color: var(--font-color);
     max-width: 20ch;
+}
+
+#hero > h1 > span {
+    display: block;
 }
 
 #hero > p {
@@ -227,6 +233,14 @@ main > #hero {
 
 #hero > a:hover {
     background-color: var(--font-color2);
+}
+
+/* Sobre */
+#sobre > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 0;
 }
 
 /* Serviços */
