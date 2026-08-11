@@ -200,14 +200,38 @@ header nav > a:hover {
 
 /* Hero */
 main > #hero {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 1.5rem;
+    min-height: 100vh;
     padding: 4rem 1rem;
     text-align: center;
+    overflow: hidden;
+    background-image:
+        repeating-linear-gradient(
+            -8deg,
+            transparent 0 60px,
+            transparent 60px
+        );
+}
 
-    height: 90vh;
+#hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70'%3E%3Ctext x='0' y='20' font-family='monospace' font-size='18' fill='%23185FA5' opacity='0.2'%3E%3C/%3E%3C/text%3E%3Ctext x='35' y='55' font-family='monospace' font-size='14' fill='%23185FA5' opacity='0.16'%3E%7B %7D%3C/text%3E%3C/svg%3E");
+    background-repeat: repeat;
+    transform: rotate(-8deg) scale(1.3);
+    pointer-events: none;
+}
+
+#hero > * {
+    position: relative;
+    z-index: 1;
 }
 
 #hero > h1 {
@@ -233,6 +257,27 @@ main > #hero {
 
 #hero > a:hover {
     background-color: var(--font-color2);
+}
+
+/* Selos abaixo do CTA */
+#hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.625rem;
+}
+
+#hero-badges > span {
+    display: flex;
+    align-items: center;
+    gap: 0.3125rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--font-color2);
+    background-color: var(--bg-color, #fff);
+    border: 1px solid var(--border-color, #ddd);
+    border-radius: 999px;
+    padding: 0.375rem 0.75rem;
 }
 
 /* Sobre */
@@ -346,7 +391,7 @@ footer > p {
 }
 
 footer > nav {
-    display: flex;
+    display: none;
     justify-content: center;
     gap: 1rem;
     margin: 1rem 0;
@@ -364,22 +409,80 @@ footer > nav > a:hover {
 }
 
 /* FAQ */
+#faq {
+    padding: 3rem 1rem;
+}
+
+#faq > h2 {
+    margin: 1.5rem 0;
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: clamp(1.375rem, 5vw, 1.75rem);
+    line-height: 1.25;
+    color: var(--font-color);
+    margin-bottom: 1rem;
+}
+
 #faq > details {
-    padding: 1.25rem 0;
+    background-color: var(--background2);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: border-color 0.2s ease;
 }
 
 #faq > details + details {
-    border-top: 1px solid var(--borda);
+    margin-top: 0.75rem;
+}
+
+#faq > details[open] {
+    border-color: var(--primary);
 }
 
 #faq > details > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
     font-family: var(--font-title);
     font-weight: 500;
     font-size: 1.05rem;
     color: var(--font-color);
     cursor: pointer;
+    list-style: none;
+}
+
+#faq > details > summary::-webkit-details-marker {
+    display: none;
+}
+
+#faq > details > summary:hover {
+    color: var(--primary);
+}
+
+#faq > details > summary::after {
+    content: '+';
+    flex-shrink: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    background-color: var(--background);
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+#faq > details[open] > summary::after {
+    transform: rotate(45deg);
 }
 
 #faq > details > p {
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--borda);
 }
